@@ -1,0 +1,16 @@
+.footer__copy {
+  width: 282px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 17px;
+  color: #545454;
+}
+
+@media screen and (min-width: 1280px) {
+  .footer__copy {
+    width: 318px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

@@ -1,0 +1,24 @@
+.popup__text {
+  width: 238px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  box-sizing: border-box;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.popup__text::placeholder {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+
+@media screen and (min-width: 1280px) {
+  .popup__text {
+    width: 358px;
+  }
+}
+
+
+

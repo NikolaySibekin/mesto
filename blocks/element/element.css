@@ -1,0 +1,22 @@
+.element {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  color: #000000;
+  width: 282px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .element {
+    margin-right: 17px;
+  }
+  .element:nth-child(3n) {
+    margin-right: 0;
+  }
+}

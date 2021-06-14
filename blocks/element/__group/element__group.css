@@ -1,0 +1,10 @@
+.element__group {
+  padding-right: 30px;
+  width: 22px;
+  transition: opacity 350ms ease;
+}
+
+.element__group:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
