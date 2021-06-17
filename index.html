@@ -22,42 +22,42 @@
           <div class="profile__info">
             <div class="profile__cover">
               <h1 class="profile__heading">Жак-Ив&nbsp;Кусто</h1>
-              <button class="profile__edit-button"></button>
+              <button type="text" class="profile__edit-button"></button>
             </div>
             <p class="profile__sub-heading">Исследователь океана</p>
           </div>
-          <button class="profile__add-button"></button>
+          <button type="text" class="profile__add-button"></button>
         </section>
         <section class="elements">
           <div class="element">
             <img class="element__image" src="./images/photo-elements-karachaevsk.jpg" alt="фото Карачаевск">
             <h2 class="element__caption">Карачаевск</h2>
-            <img class="element__group" src="./images/love-iccon.svg" alt="иконка Нравится">
+            <button type="text" class="element__group"></button>
           </div>
           <div class="element">
             <img class="element__image" src="./images/photo-elements-elbrus.jpg" alt="фото Гора Эльбрус">
             <h2 class="element__caption">Гора Эльбрус</h2>
-            <img class="element__group" src="./images/love-iccon.svg" alt="иконка Нравится">
+            <button type="text" class="element__group"></button>
           </div>
           <div class="element">
             <img class="element__image" src="./images/photo-elements-dombai.jpg" alt="фото Домбай">
             <h2 class="element__caption">Домбай</h2>
-            <img class="element__group" src="./images/love-iccon.svg" alt="иконка Нравится">
+            <button type="text" class="element__group"></button>
           </div>
           <div class="element">
             <img class="element__image" src="./images/photo-elements-elbrus.jpg" alt="фото Гора Эльбрус">
             <h2 class="element__caption">Гора Эльбрус</h2>
-            <img class="element__group" src="./images/love-iccon.svg" alt="иконка Нравится">
+            <button type="text" class="element__group"></button>
           </div>
           <div class="element">
             <img class="element__image" src="./images/photo-elements-dombai.jpg" alt="фото Домбай">
             <h2 class="element__caption">Домбай</h2>
-            <img class="element__group" src="./images/love-iccon.svg" alt="иконка Нравится">
+            <button type="text" class="element__group"></button>
           </div>
           <div class="element">
             <img class="element__image" src="./images/photo-elements-karachaevsk.jpg" alt="фото Карачаево-Черкессия">
             <h2 class="element__caption">Карачаево-Черкессия</h2>
-            <img class="element__group" src="./images/love-iccon.svg" alt="иконка Нравится">
+            <button type="text" class="element__group"></button>
           </div>
         </section>
       </main>
@@ -67,11 +67,13 @@
       <section class="popup popup_opened">
         <div class="popup__container">
           <div class="popup__content">
-            <button class="popup__close-button"></button>
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <input type="text" placeholder="Жак-Ив Кусто" class="popup__text">
-            <input type="text" placeholder="Исследователь океана" class="popup__text">
-            <button type="submit" class="popup__submit-button">Сохранить</button>
+            <button type="text" class="popup__close-button"></button>
+            <form action="" method="post">
+              <h3 class="popup__title">Редактировать профиль</h3>
+              <input type="text" name="name" placeholder="Введите имя" value="Жак-Ив Кусто" class="popup__text">
+              <input type="text" name="job" placeholder="Введите вид деятельности" value="Исследователь океана" class="popup__text">
+              <button type="submit" class="popup__submit-button">Сохранить</button>
+            </form>
           </div>
         </div>
       </section>
