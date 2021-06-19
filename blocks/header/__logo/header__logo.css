@@ -2,7 +2,7 @@
   display: block;
   width: 104px;
   height: 24px;
-  padding-left: 27px;
+  margin-left: 27px;
   background-image: url(../../../images/header-logo.svg);
   color: #FFFFFF;
   background-size: cover;
@@ -21,6 +21,6 @@
   .header__logo {
     width: 142px;
     height: 33px;
-    padding-left: 0;
+    margin-left: 0;
   }
 }

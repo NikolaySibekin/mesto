@@ -1,4 +1,6 @@
 const popupEditButtonElement = document.querySelector('.profile__edit-button');
+let userName = document.querySelector('.profile__heading');
+let userJob = document.querySelector('.profile__sub-heading');
 const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close-button');
 const popupSubmitButtonElement = popupElement.querySelector('.popup__submit-button');
@@ -6,22 +8,22 @@ let nameInput = document.edit.elements.name;
 let jobInput = document.edit.elements.job;
 
 const pageToInput = function() {
-  nameInput.value = document.querySelector('.profile__heading').textContent;
-  jobInput.value = document.querySelector('.profile__sub-heading').textContent;
+  nameInput.value = userName.textContent;
+  jobInput.value = userJob.textContent;
+  togglePopupVisibility();
 }
 
 const togglePopupVisibility = function() {
   popupElement.classList.toggle('popup_opened');
-  pageToInput();
 }
 
 const formSubmitHandler = function(evt) {
     evt.preventDefault();
-    document.querySelector('.profile__heading').value = nameInput.textContent;
-    document.querySelector('.profile__sub-heading').value = jobInput.textContent;
-    togglePopupVisibility ;
+    userName.value = nameInput.textContent;
+    userJob.value = jobInput.textContent;
+    togglePopupVisibility();
 }
 
-popupEditButtonElement.addEventListener('click', togglePopupVisibility);
+popupEditButtonElement.addEventListener('click', pageToInput);
 popupCloseButtonElement.addEventListener('click', togglePopupVisibility);
-popupSubmitButtonElement.addEventListener('submit', formSubmitHandler);
+document.edit.addEventListener('submit', formSubmitHandler);
