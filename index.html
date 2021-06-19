@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="четвертый проект на Яндекс Практикуме">
-    <meta name="keywords" content="Карачаево-Черкессия, Карачаевск, Домбай, Эльбрус">
     <meta name="author" content="Николай Сибекин">
     <title>Места России</title>
     <link rel="stylesheet" href="./pages/index.css">
@@ -13,70 +12,67 @@
 <body class="page">
     <div class="page__container">
       <header class="header">
-          <img src="./images/header-logo.png" alt="логотип Места России" class="header__logo">
-          <div class="header__line"></div>
+        <a href="#" class="header__logo"></a>
       </header>
       <main class="content">
-        <section class="profile">
+        <section aria-label="Профиль пользователя" class="profile">
           <div class="profile__avatar"></div>
           <div class="profile__info">
             <div class="profile__cover">
               <h1 class="profile__heading">Жак-Ив&nbsp;Кусто</h1>
-              <button type="text" class="profile__edit-button"></button>
+              <button type="button" aria-label="Редактировать профиль" class="profile__edit-button"></button>
             </div>
             <p class="profile__sub-heading">Исследователь океана</p>
           </div>
-          <button type="text" class="profile__add-button"></button>
+          <button type="button" aria-label="Добавить фото" class="profile__add-button"></button>
         </section>
-        <section class="elements">
-          <div class="element">
-            <img class="element__image" src="./images/photo-elements-karachaevsk.jpg" alt="фото Карачаевск">
-            <h2 class="element__caption">Карачаевск</h2>
-            <button type="text" class="element__group"></button>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/photo-elements-elbrus.jpg" alt="фото Гора Эльбрус">
-            <h2 class="element__caption">Гора Эльбрус</h2>
-            <button type="text" class="element__group"></button>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/photo-elements-dombai.jpg" alt="фото Домбай">
-            <h2 class="element__caption">Домбай</h2>
-            <button type="text" class="element__group"></button>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/photo-elements-elbrus.jpg" alt="фото Гора Эльбрус">
-            <h2 class="element__caption">Гора Эльбрус</h2>
-            <button type="text" class="element__group"></button>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/photo-elements-dombai.jpg" alt="фото Домбай">
-            <h2 class="element__caption">Домбай</h2>
-            <button type="text" class="element__group"></button>
-          </div>
-          <div class="element">
-            <img class="element__image" src="./images/photo-elements-karachaevsk.jpg" alt="фото Карачаево-Черкессия">
-            <h2 class="element__caption">Карачаево-Черкессия</h2>
-            <button type="text" class="element__group"></button>
-          </div>
+        <section aria-label="Фотогалерея" class="cards">
+          <article class="card">
+            <img class="card__image" src="./images/photo-card-karachaevsk.jpg" alt="фото Карачаевск">
+            <h2 class="card__caption">Карачаевск</h2>
+            <button aria-label="Поставить лайк" type="button" class="card__group"></button>
+          </article>
+          <article class="card">
+            <img class="card__image" src="./images/photo-card-elbrus.jpg" alt="фото Гора Эльбрус">
+            <h2 class="card__caption">Гора Эльбрус</h2>
+            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
+          </article>
+          <article class="card">
+            <img class="card__image" src="./images/photo-card-dombai.jpg" alt="фото Домбай">
+            <h2 class="card__caption">Домбай</h2>
+            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
+          </article>
+          <article class="card">
+            <img class="card__image" src="./images/photo-card-elbrus.jpg" alt="фото Гора Эльбрус">
+            <h2 class="card__caption">Гора Эльбрус</h2>
+            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
+          </article>
+          <article class="card">
+            <img class="card__image" src="./images/photo-card-dombai.jpg" alt="фото Домбай">
+            <h2 class="card__caption">Домбай</h2>
+            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
+          </article>
+          <article class="card">
+            <img class="card__image" src="./images/photo-card-karachaevsk.jpg" alt="фото Карачаево-Черкессия">
+            <h2 class="card__caption">Карачаево-Черкессия</h2>
+            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
+          </article>
         </section>
       </main>
       <footer class="footer">
           <p class="footer__copy">&copy; 2021 Mesto Russia</p>
       </footer>
-      <section class="popup popup_opened">
+      <article class="popup">
         <div class="popup__container">
-          <div class="popup__content">
-            <button type="text" class="popup__close-button"></button>
-            <form action="" method="post">
-              <h3 class="popup__title">Редактировать профиль</h3>
-              <input type="text" name="name" placeholder="Введите имя" value="Жак-Ив Кусто" class="popup__text">
-              <input type="text" name="job" placeholder="Введите вид деятельности" value="Исследователь океана" class="popup__text">
-              <button type="submit" class="popup__submit-button">Сохранить</button>
-            </form>
-          </div>
+          <form name="edit" action="#" method="post" class="popup__content">
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <input type="text" name="name" placeholder="Введите имя" value="" class="popup__text">
+            <input type="text" name="job" placeholder="Введите вид деятельности" value="" class="popup__text">
+            <button type="submit" class="popup__submit-button">Сохранить</button>
+            <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
+          </form>
         </div>
-      </section>
+      </article>
     </div>
     <script src="./scripts/index.js"></script>
 </body>

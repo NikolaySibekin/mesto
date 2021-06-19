@@ -1,4 +1,4 @@
-.element__group {
+.card__group {
   margin-right: 30px;
   width: 22px;
   background-image: url(../../../images/love-iccon.svg);
@@ -9,7 +9,7 @@
   transition: opacity 350ms ease;
 }
 
-.element__group:hover {
+.card__group:hover {
   opacity: 0.5;
   cursor: pointer;
 }

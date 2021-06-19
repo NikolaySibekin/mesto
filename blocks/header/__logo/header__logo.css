@@ -1,7 +1,20 @@
 .header__logo {
+  display: block;
   width: 104px;
   height: 24px;
   padding-left: 27px;
+  background-image: url(../../../images/header-logo.svg);
+  color: #FFFFFF;
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+  transition: opacity 350ms ease;
+}
+
+.header__logo:hover {
+  color: #000000;
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1280px) {

@@ -1,4 +1,4 @@
-.element {
+.card {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -13,10 +13,10 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .element {
+  .card {
     margin-right: 17px;
   }
-  .element:nth-child(3n) {
+  .card:nth-child(3n) {
     margin-right: 0;
   }
 }

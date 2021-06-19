@@ -1,16 +1,17 @@
 .popup__close-button {
+  display: block;
   position: absolute;
-  left: 86%;
-  right: 6%;
-  top: 91px;
+  top: -35px;
+  right: -25px;
   width: 26px;
   height: 26px;
   background-image: url(../../../images/add-button.svg);
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
+  padding: 0;
   border: none;
-  color: #FFFFFF;
+  color: #FFFF;
   background-color: transparent;
   transform: rotate(-45deg);
   transition: opacity 350ms ease;
@@ -23,9 +24,8 @@
 
 @media screen and (min-width: 1280px) {
   .popup__close-button {
-    left: 66%;
-    right: 30%;
-    top: 160px;
+    top: -35px;
+    right: -65px;
     width: 40px;
     height: 40px;
   }
