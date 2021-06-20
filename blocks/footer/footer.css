@@ -1,8 +1,8 @@
 .footer {
   width: 282px;
   margin: 0 auto;
-  padding-top: 18px;
-  padding-bottom: 40px;
+  padding-top: 22px;
+  padding-bottom: 36px;
 }
 
 @media screen and (min-width: 1280px) {
