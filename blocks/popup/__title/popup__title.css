@@ -2,8 +2,7 @@
   font-family: 'Inter', Arial, sans-serif;
   font-size: 18px;
   line-height: 22px;
-  font-weight: 900;
-  letter-spacing: -1px;
+  font-weight: bold;
   color: #000000;
   margin-top: 0;
   padding-top: 25px;
@@ -12,10 +11,8 @@
 
 @media screen and (min-width: 1280px) {
   .popup__title {
-    font-weight: bold;
     font-size: 24px;
     line-height: 29px;
-    letter-spacing: 0px;
     padding-top: 33px;
     margin-bottom: 47px;
   }
