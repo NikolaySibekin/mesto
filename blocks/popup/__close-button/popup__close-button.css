@@ -1,13 +1,13 @@
 .popup__close-button {
   display: block;
   position: absolute;
-  width: 30px;
-  height: 30px;
-  top: -40px;
-  right: -30px;
+  width: 31px;
+  height: 31px;
+  top: -45px;
+  right: -40px;
   background-image: url(../../../images/close-iccon.svg);
   background-position: center;
-  background-size: 30px 30px;
+  background-size: 31px 31px;
   background-repeat: no-repeat;
   box-sizing: border-box;
   padding: 0;
