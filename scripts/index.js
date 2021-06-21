@@ -19,8 +19,8 @@ const togglePopupVisibility = function() {
 
 const formSubmitHandler = function(evt) {
     evt.preventDefault();
-    userName.value = nameInput.textContent;
-    userJob.value = jobInput.textContent;
+    userName.textContent = nameInput.value;
+    userJob.textContent = jobInput.value;
     togglePopupVisibility();
 }
 
