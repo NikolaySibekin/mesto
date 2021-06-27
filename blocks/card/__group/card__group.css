@@ -1,10 +1,8 @@
 .card__group {
   margin-right: 22px;
   width: 20px;
-  background-image: url(../../../images/love-iccon.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background: url(../../../images/love-iccon.svg) center no-repeat;
+  background-size: 100%;
   background-color: transparent;
   border: 0;
   transition: opacity 350ms ease;

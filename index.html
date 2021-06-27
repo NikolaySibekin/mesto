@@ -27,36 +27,7 @@
           <button type="button" aria-label="Добавить фото" class="profile__add-button"></button>
         </section>
         <section aria-label="Фотогалерея" class="cards">
-          <article class="card">
-            <img class="card__image" src="./images/photo-card-karachaevsk.jpg" alt="фото Карачаевск">
-            <h2 class="card__caption">Карачаевск</h2>
-            <button aria-label="Поставить лайк" type="button" class="card__group"></button>
-          </article>
-          <article class="card">
-            <img class="card__image" src="./images/photo-card-elbrus.jpg" alt="фото Гора Эльбрус">
-            <h2 class="card__caption">Гора Эльбрус</h2>
-            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
-          </article>
-          <article class="card">
-            <img class="card__image" src="./images/photo-card-dombai.jpg" alt="фото Домбай">
-            <h2 class="card__caption">Домбай</h2>
-            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
-          </article>
-          <article class="card">
-            <img class="card__image" src="./images/photo-card-elbrus.jpg" alt="фото Гора Эльбрус">
-            <h2 class="card__caption">Гора Эльбрус</h2>
-            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
-          </article>
-          <article class="card">
-            <img class="card__image" src="./images/photo-card-dombai.jpg" alt="фото Домбай">
-            <h2 class="card__caption">Домбай</h2>
-            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
-          </article>
-          <article class="card">
-            <img class="card__image" src="./images/photo-card-karachaevsk.jpg" alt="фото Карачаево-Черкессия">
-            <h2 class="card__caption">Карачаево-Черкессия</h2>
-            <button type="button" aria-label="Поставить лайк" class="card__group"></button>
-          </article>
+          <article class="card__render"></article>
         </section>
       </main>
       <footer class="footer">
@@ -66,14 +37,37 @@
         <div class="popup__container">
           <form name="edit" class="popup__content">
             <h3 class="popup__title">Редактировать профиль</h3>
-            <input type="text" name="name" placeholder="Введите имя" class="popup__text">
-            <input type="text" name="job" placeholder="Введите вид деятельности" class="popup__text">
+            <input type="text" name="name" placeholder="Имя" class="popup__text">
+            <input type="text" name="job" placeholder="Вид деятельности" class="popup__text">
             <button type="submit" class="popup__submit-button">Сохранить</button>
             <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
           </form>
         </div>
       </article>
+      <article class="popup-place">
+        <div class="popup__container">
+          <form name="add" class="popup__content">
+            <h3 class="popup__title">Новое место</h3>
+            <input type="text" name="place" placeholder="Название" class="popup__text">
+            <input type="text" name="link" placeholder="Ссылка на картинку" class="popup__text">
+            <button type="submit" class="popup__submit-button">Сохранить</button>
+            <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
+          </form>
+        </div>
+      </article>
+      <article class="popup-image">
+        <div class="popup__image"></div>
+        <h2 class="image__caption"></h2>
+      </article>
     </div>
+    <template id="card-template">
+      <article class="card">
+        <img class="card__image" src="#" alt="">
+        <button aria-label="Удалить карточку" type="button" class="card__trash"></button>
+        <h2 class="card__caption"></h2>
+        <button type="button" aria-label="Поставить лайк" class="card__group"></button>
+      </article>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
