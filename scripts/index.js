@@ -31,6 +31,9 @@ for (let i = 0; i < initialCards.length; i++) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardElement.querySelector('.card__image').src = initialCards[i].link;
   cardElement.querySelector('.card__caption').textContent = initialCards[i].name;
+  cardElement.querySelector('.card__group').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__group_active');
+  });
   cardRender.append(cardElement);
 }
 
