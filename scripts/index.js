@@ -39,7 +39,7 @@ const userName = document.querySelector('.profile__heading');
 const userJob = document.querySelector('.profile__sub-heading');
 const nameInput = document.edit.elements.name;
 const jobInput = document.edit.elements.job;
-const renderedCard = document.querySelector(".card__render");
+const renderedCard = document.querySelector(".cards__render");
 const cardTemplateContent = document.querySelector("#card-template").content;
 
 function setIventListeners(cardElement) {
