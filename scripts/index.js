@@ -25,76 +25,100 @@ const initialCards = [
   }
 ];
 
-for (let i = 0; i < initialCards.length; i++) {
-  const cardRender = document.querySelector('.card__render');
-  const cardTemplate = document.querySelector('#card-template').content;
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  cardElement.querySelector('.card__image').src = initialCards[i].link;
-  cardElement.querySelector('.card__caption').textContent = initialCards[i].name;
-  cardElement.querySelector('.card__group').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('card__group_active');
-  });
-  cardRender.append(cardElement);
-}
-
-
-
 const popupEditButtonElement = document.querySelector('.profile__edit-button');
-let userName = document.querySelector('.profile__heading');
-let userJob = document.querySelector('.profile__sub-heading');
 const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close-button');
 const popupSubmitButtonElement = popupElement.querySelector('.popup__submit-button');
-let nameInput = document.edit.elements.name;
-let jobInput = document.edit.elements.job;
-
 const popupAddButtonElement = document.querySelector('.profile__add-button');
-let newPlace = document.querySelector('.card__caption');
-let newPlaceLink = document.querySelector('.card__image');
 const popupPlaceElement = document.querySelector('.popup-place');
 const popupPlaceCloseButtonElement = popupPlaceElement.querySelector('.popup__close-button');
 const popupPlaceSubmitButtonElement = popupPlaceElement.querySelector('.popup__submit-button');
-let namePlaceInput = document.add.elements.place;
-let imageLinkInput = document.add.elements.link;
+const userName = document.querySelector('.profile__heading');
+const userJob = document.querySelector('.profile__sub-heading');
+const nameInput = document.edit.elements.name;
+const jobInput = document.edit.elements.job;
+const renderedCard = document.querySelector(".card__render");
+const cardTemplateContent = document.querySelector("#card-template").content;
 
-const loveButtonElement = document.querySelector('.card__group');
-const trashButtonElement = document.querySelector('.card__trash');
+function setIventListeners(cardElement) {
+  cardElement.querySelector(".card__trash").addEventListener("click", handleDelete);
+  cardElement.querySelector(".card__group").addEventListener("click", handleLike);
+}
 
-const pageToInput = function() {
+function renderCard(element) {
+  const cardElement = cardTemplateContent.cloneNode(true);
+  const cardCaptionElement = cardElement.querySelector('.card__caption');
+  const cardImageElement = cardElement.querySelector('.card__image');
+  const cardTitleElement = cardElement.querySelector('.card__image').alt;
+  cardCaptionElement.textContent = element.name;
+  cardTitleElement.textContent = element.name;
+  cardImageElement.src = element.link;
+  setIventListeners(cardElement);
+  renderedCard.append(cardElement);
+}
+
+function renderCards(initialCards) {
+  initialCards.forEach(renderCard);
+}
+
+function handleDelete(event) {
+  const cardElement = event.target.closest(".card");
+  cardElement.remove();
+}
+
+function handleLike(event) {
+  event.target.classList.toggle('card__group_active');
+}
+
+function handleEdit() {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
   togglePopupVisibility();
 }
 
-const togglePopupVisibility = function() {
+function togglePopupVisibility() {
   popupElement.classList.toggle('popup_opened');
 }
 
-const formSubmitHandler = function(evt) {
-  evt.preventDefault();
+function handleSubmit(event) {
+  event.preventDefault();
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
   togglePopupVisibility();
 }
 
-const addNewPlace = function() {
+function addNewPlace() {
   placeTogglePopupVisibility();
 }
 
-const placeTogglePopupVisibility = function() {
-  newPlace.textContent = namePlaceInput.value;
-  newPlaceLink.textContent = imageLinkInput.value;
+function placeTogglePopupVisibility() {
   popupPlaceElement.classList.toggle('popup-place_opened');
 }
 
-const placeFormSubmitHandler = function(evt) {
-  evt.preventDefault();
+function addCard(item) {
+  const cardElement = cardTemplateContent.cloneNode(true);
+  const cardCaptionElement = cardElement.querySelector('.card__caption');
+  const cardImageElement = cardElement.querySelector('.card__image');
+  const cardTitleElement = cardElement.querySelector('.card__image').alt;
+  cardCaptionElement.textContent = item.place.value;
+  cardTitleElement.textContent = item.place.value;
+  cardImageElement.src = item.link.value;
+  setIventListeners(cardElement);
+  renderedCard.append(cardElement);
+}
+
+function placeHandleSubmit(event) {
+  event.preventDefault();
+  const item = document.add.elements;
+  addCard(item);
   placeTogglePopupVisibility();
 }
 
-popupEditButtonElement.addEventListener('click', pageToInput);
+popupEditButtonElement.addEventListener('click', handleEdit);
 popupAddButtonElement.addEventListener('click', addNewPlace);
 popupCloseButtonElement.addEventListener('click', togglePopupVisibility);
 popupPlaceCloseButtonElement.addEventListener('click', placeTogglePopupVisibility);
-document.edit.addEventListener('submit', formSubmitHandler);
-document.add.addEventListener('submit', placeFormSubmitHandler);
+document.edit.addEventListener('submit', handleSubmit);
+document.add.addEventListener('submit', placeHandleSubmit);
+
+renderCards(initialCards);
