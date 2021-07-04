@@ -33,6 +33,8 @@ const popupAddButtonElement = document.querySelector('.profile__add-button');
 const popupPlaceElement = document.querySelector('.popup-place');
 const popupPlaceCloseButtonElement = popupPlaceElement.querySelector('.popup__close-button');
 const popupPlaceSubmitButtonElement = popupPlaceElement.querySelector('.popup__submit-button');
+const popupImageElement = document.querySelector('.popup-image');
+const popupImageCloseButtonElement = popupImageElement.querySelector('.popup-image__close-button');
 const userName = document.querySelector('.profile__heading');
 const userJob = document.querySelector('.profile__sub-heading');
 const nameInput = document.edit.elements.name;
@@ -43,16 +45,14 @@ const cardTemplateContent = document.querySelector("#card-template").content;
 function setIventListeners(cardElement) {
   cardElement.querySelector(".card__trash").addEventListener("click", handleDelete);
   cardElement.querySelector(".card__group").addEventListener("click", handleLike);
+  cardElement.querySelector(".card__image").addEventListener("click", handleImage);
 }
 
 function renderCard(element) {
   const cardElement = cardTemplateContent.cloneNode(true);
-  const cardCaptionElement = cardElement.querySelector('.card__caption');
-  const cardImageElement = cardElement.querySelector('.card__image');
-  const cardTitleElement = cardElement.querySelector('.card__image').alt;
-  cardCaptionElement.textContent = element.name;
-  cardTitleElement.textContent = element.name;
-  cardImageElement.src = element.link;
+  cardElement.querySelector('.card__caption').textContent = element.name;
+  cardElement.querySelector('.card__image').alt.value = element.name;
+  cardElement.querySelector('.card__image').src = element.link;
   setIventListeners(cardElement);
   renderedCard.append(cardElement);
 }
@@ -95,14 +95,24 @@ function placeTogglePopupVisibility() {
   popupPlaceElement.classList.toggle('popup-place_opened');
 }
 
+function handleImage(event) {
+  const element = event.target;
+  const popupImageImage = document.querySelector('.popup-image__image')
+  const popupImageCaption = document.querySelector('.popup-image__caption')
+  popupImageImage.src = element.src;
+  popupImageCaption.textContent = element.alt;
+  imageTogglePopupVisibility(event);
+}
+
+function imageTogglePopupVisibility() {
+  popupImageElement.classList.toggle('popup-image_opened');
+}
+
 function addCard(item) {
   const cardElement = cardTemplateContent.cloneNode(true);
-  const cardCaptionElement = cardElement.querySelector('.card__caption');
-  const cardImageElement = cardElement.querySelector('.card__image');
-  const cardTitleElement = cardElement.querySelector('.card__image').alt;
-  cardCaptionElement.textContent = item.place.value;
-  cardTitleElement.textContent = item.place.value;
-  cardImageElement.src = item.link.value;
+  cardElement.querySelector('.card__caption').textContent = item.place.value;
+  cardElement.querySelector('.card__image').alt.value = item.place.value;
+  cardElement.querySelector('.card__image').src = item.link.value;
   setIventListeners(cardElement);
   renderedCard.append(cardElement);
 }
@@ -118,6 +128,7 @@ popupEditButtonElement.addEventListener('click', handleEdit);
 popupAddButtonElement.addEventListener('click', addNewPlace);
 popupCloseButtonElement.addEventListener('click', togglePopupVisibility);
 popupPlaceCloseButtonElement.addEventListener('click', placeTogglePopupVisibility);
+popupImageCloseButtonElement.addEventListener('click', imageTogglePopupVisibility);
 document.edit.addEventListener('submit', handleSubmit);
 document.add.addEventListener('submit', placeHandleSubmit);
 
