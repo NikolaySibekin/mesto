@@ -1,16 +1,15 @@
 .popup-image__container {
   display: block;
-  position: relative;
   margin: 0 auto;
   width: 240px;
-  height: 321px;
-  background: #000;
+  height: 327px;
+  background: transparent;
   overflow: hidden;
 }
 
 @media screen and (min-width: 1280px) {
   .popup-image__container {
     width: 816px;
-    height: 562px;
+    height: 567px;
   }
 }

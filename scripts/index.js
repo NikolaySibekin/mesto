@@ -51,7 +51,7 @@ function setIventListeners(cardElement) {
 function renderCard(element) {
   const cardElement = cardTemplateContent.cloneNode(true);
   cardElement.querySelector('.card__caption').textContent = element.name;
-  cardElement.querySelector('.card__image').alt.value = element.name;
+  cardElement.querySelector('.card__image').alt = element.name;
   cardElement.querySelector('.card__image').src = element.link;
   setIventListeners(cardElement);
   renderedCard.append(cardElement);
@@ -111,7 +111,7 @@ function imageTogglePopupVisibility() {
 function addCard(item) {
   const cardElement = cardTemplateContent.cloneNode(true);
   cardElement.querySelector('.card__caption').textContent = item.place.value;
-  cardElement.querySelector('.card__image').alt.value = item.place.value;
+  cardElement.querySelector('.card__image').alt = item.place.value;
   cardElement.querySelector('.card__image').src = item.link.value;
   setIventListeners(cardElement);
   renderedCard.append(cardElement);
