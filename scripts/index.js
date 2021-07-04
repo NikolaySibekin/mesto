@@ -113,8 +113,10 @@ function addCard(item) {
   cardElement.querySelector('.card__caption').textContent = item.place.value;
   cardElement.querySelector('.card__image').alt = item.place.value;
   cardElement.querySelector('.card__image').src = item.link.value;
-  setIventListeners(cardElement);
-  renderedCard.append(cardElement);
+  if (item.place.value !== '') {
+    setIventListeners(cardElement);
+    renderedCard.append(cardElement);
+  }
 }
 
 function placeHandleSubmit(event) {
