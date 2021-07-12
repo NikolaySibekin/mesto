@@ -75,7 +75,7 @@ function createCard(elementName, elementLink) {
 }
 
 function addCard(container, cardElement) {
-  container.append(cardElement);
+  container.prepend(cardElement);
 }
 
 function renderCards(initialCards) {
@@ -95,25 +95,29 @@ function handleLike(event) {
   event.target.classList.toggle('card__group_active');
 }
 
-function togglePopupVisibility(popupElementName) {
-  popupElementName.classList.toggle('popup_opened');
+function popupOpened(popupElementName) {
+  popupElementName.classList.add('popup_opened');
+}
+
+function popupClosed(popupElementName) {
+  popupElementName.classList.remove('popup_opened');
 }
 
 function handleEdit() {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
-  togglePopupVisibility(popupEditElement);
+  popupOpened(popupEditElement);
 }
 
 function handleEditSubmit(event) {
   event.preventDefault();
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
-  togglePopupVisibility(popupEditElement);
+  popupClosed(popupEditElement);
 }
 
 function addNewPlace() {
-  togglePopupVisibility(popupPlaceElement);
+  popupOpened(popupPlaceElement);
 }
 
 function handlePlaceSubmit(event) {
@@ -121,7 +125,7 @@ function handlePlaceSubmit(event) {
   const elementName = placeInput.value;
   const elementLink = linkInput.value;
   addCard(renderedCard, createCard(elementName, elementLink));
-  togglePopupVisibility(popupPlaceElement);
+  popupClosed(popupPlaceElement);
 }
 
 function handleImage(event) {
@@ -137,13 +141,13 @@ function handleImage(event) {
 popupEditButtonElement.addEventListener('click', handleEdit);
 popupAddButtonElement.addEventListener('click', addNewPlace);
 popupEditCloseButtonElement.addEventListener('click', function() {
-  togglePopupVisibility(popupEditElement);
+  popupClosed(popupEditElement);
 });
 popupPlaceCloseButtonElement.addEventListener('click', function() {
-  togglePopupVisibility(popupPlaceElement);
+  popupClosed(popupPlaceElement);
 });
 popupImageCloseButtonElement.addEventListener('click', function() {
-  togglePopupVisibility(popupImageElement);
+  popupClosed(popupImageElement);
 });
 popupEditSubmitButtonElement.addEventListener('submit', handleEditSubmit);
 popupPlaceSubmitButtonElement.addEventListener('submit', handlePlaceSubmit);
