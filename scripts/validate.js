@@ -60,11 +60,14 @@ const enableValidation = () => {
 };
 
 enableValidation();
+
 /*
 enableValidation({
-  formSelector: "popup__content",
-  inputSelector: "popup__text",
-  buttonSelector: "popup__submit-button"
-});
-
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}); 
 */

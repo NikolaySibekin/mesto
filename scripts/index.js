@@ -93,32 +93,42 @@ const handleDelete = (event) => {
 
 const handleLike = (event) => {
   event.target.classList.toggle('card__group_active');
-}
+};
+
+const closeByEsc = (event) => {
+  if (event.key === 27) {
+    openedPopup = document.querySelector('.popup_opened');
+    console.log('рабтает');
+    popupClosed(openedPopup);
+  }
+};
 
 const popupOpened = (popupElementName) => {
   popupElementName.classList.add('popup_opened');
-}
+  document.addEventListener('keydown', closeByEsc);
+  //document.addEventListener('click', closeByClick);
+};
 
 const popupClosed = (popupElementName) => {
   popupElementName.classList.remove('popup_opened');
-}
+};
 
 const handleEdit = () => {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
   popupOpened(popupEditElement);
-}
+};
 
 const handleEditSubmit = (event) => {
   event.preventDefault();
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
   popupClosed(popupEditElement);
-}
+};
 
 const addNewPlace = () => {
   popupOpened(popupPlaceElement);
-}
+};
 
 const handlePlaceSubmit = (event) => {
   event.preventDefault();
@@ -126,7 +136,7 @@ const handlePlaceSubmit = (event) => {
   const elementLink = linkInput.value;
   addCard(renderedCard, createCard(elementName, elementLink));
   popupClosed(popupPlaceElement);
-}
+};
 
 const handleImage = (event) => {
   const element = event.target;
@@ -136,7 +146,8 @@ const handleImage = (event) => {
   popupImageImage.alt = element.alt;
   popupImageCaption.textContent = element.alt;
   togglePopupVisibility(popupImageElement);
-}
+};
+
 
 popupEditButtonElement.addEventListener('click', handleEdit);
 popupAddButtonElement.addEventListener('click', addNewPlace);
@@ -152,4 +163,7 @@ popupImageCloseButtonElement.addEventListener('click', () => {
 popupEditSubmitButtonElement.addEventListener('submit', handleEditSubmit);
 popupPlaceSubmitButtonElement.addEventListener('submit', handlePlaceSubmit);
 
+
+
 renderCards(initialCards);
+
