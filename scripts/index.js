@@ -97,20 +97,26 @@ const handleLike = (event) => {
 
 const closeByEsc = (event) => {
   if (event.key === 27) {
-    openedPopup = document.querySelector('.popup_opened');
-    console.log('рабтает');
+    openedPopup = document.querySelector('openedPopup');
     popupClosed(openedPopup);
   }
 };
 
+document.addEventListener("click", (event) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (openedPopup && event.target !== openedPopup && !openedPopup.contains(event.target)) {
+    document.querySelector('.popup').classList.remove('.popup_opened');
+  }
+});
+
 const popupOpened = (popupElementName) => {
   popupElementName.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
-  //document.addEventListener('click', closeByClick);
 };
 
 const popupClosed = (popupElementName) => {
   popupElementName.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
 };
 
 const handleEdit = () => {
