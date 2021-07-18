@@ -59,68 +59,68 @@ const renderedCard = document.querySelector(".cards__render");
 //card template
 const cardTemplateContent = document.querySelector("#card-template").content;
 
-function setIventListeners(cardElement) {
+const setIventListeners = (cardElement) => {
   cardElement.querySelector(".card__trash").addEventListener("click", handleDelete);
   cardElement.querySelector(".card__group").addEventListener("click", handleLike);
   cardElement.querySelector(".card__image").addEventListener("click", handleImage);
-}
+};
 
-function createCard(elementName, elementLink) {
+const createCard = (elementName, elementLink) => {
   const cardElement = cardTemplateContent.cloneNode(true);
   cardElement.querySelector('.card__caption').textContent = elementName;
   cardElement.querySelector('.card__image').alt = elementName;
   cardElement.querySelector('.card__image').src = elementLink;
   setIventListeners(cardElement);
   return cardElement;
-}
+};
 
-function addCard(container, cardElement) {
+const addCard = (container, cardElement) => {
   container.prepend(cardElement);
-}
+};
 
-function renderCards(initialCards) {
+const renderCards = (initialCards) => {
   initialCards.forEach(function (item) {
     const elementName = item.name;
     const elementLink = item.link;
     addCard(renderedCard, createCard(elementName, elementLink));
   });
-}
+};
 
-function handleDelete(event) {
+const handleDelete = (event) => {
   const cardElement = event.target.closest(".card");
   cardElement.remove();
-}
+};
 
-function handleLike(event) {
+const handleLike = (event) => {
   event.target.classList.toggle('card__group_active');
 }
 
-function popupOpened(popupElementName) {
+const popupOpened = (popupElementName) => {
   popupElementName.classList.add('popup_opened');
 }
 
-function popupClosed(popupElementName) {
+const popupClosed = (popupElementName) => {
   popupElementName.classList.remove('popup_opened');
 }
 
-function handleEdit() {
+const handleEdit = () => {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
   popupOpened(popupEditElement);
 }
 
-function handleEditSubmit(event) {
+const handleEditSubmit = (event) => {
   event.preventDefault();
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
   popupClosed(popupEditElement);
 }
 
-function addNewPlace() {
+const addNewPlace = () => {
   popupOpened(popupPlaceElement);
 }
 
-function handlePlaceSubmit(event) {
+const handlePlaceSubmit = (event) => {
   event.preventDefault();
   const elementName = placeInput.value;
   const elementLink = linkInput.value;
@@ -128,7 +128,7 @@ function handlePlaceSubmit(event) {
   popupClosed(popupPlaceElement);
 }
 
-function handleImage(event) {
+const handleImage = (event) => {
   const element = event.target;
   const popupImageImage = document.querySelector('.popup-image__image')
   const popupImageCaption = document.querySelector('.popup-image__caption')
@@ -140,13 +140,13 @@ function handleImage(event) {
 
 popupEditButtonElement.addEventListener('click', handleEdit);
 popupAddButtonElement.addEventListener('click', addNewPlace);
-popupEditCloseButtonElement.addEventListener('click', function() {
+popupEditCloseButtonElement.addEventListener('click', () => {
   popupClosed(popupEditElement);
 });
-popupPlaceCloseButtonElement.addEventListener('click', function() {
+popupPlaceCloseButtonElement.addEventListener('click', () => {
   popupClosed(popupPlaceElement);
 });
-popupImageCloseButtonElement.addEventListener('click', function() {
+popupImageCloseButtonElement.addEventListener('click', () => {
   popupClosed(popupImageElement);
 });
 popupEditSubmitButtonElement.addEventListener('submit', handleEditSubmit);
