@@ -17,6 +17,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.classList.add('popup__submit-button_inactive');
   } else {
     buttonElement.classList.remove('popup__submit-button_inactive');
+    buttonElement.textContent = "Сохранить";
   }
 };
 
