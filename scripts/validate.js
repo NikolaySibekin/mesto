@@ -9,11 +9,12 @@ const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
   inputElement.classList.remove('popup__text_type-error');
   errorElement.classList.remove('popup__input-error_active');
-  errorElement.textContent = ' ';
+  errorElement.textContent = "";
 };
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
+    buttonElement.setAttribute('disabeled', true);
     buttonElement.classList.add('popup__submit-button_inactive');
   } else {
     buttonElement.classList.remove('popup__submit-button_inactive');
@@ -41,7 +42,7 @@ const setEventListeners = (formElement) => {
   toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
+    inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
     });
@@ -59,3 +60,11 @@ const enableValidation = () => {
 };
 
 enableValidation();
+/*
+enableValidation({
+  formSelector: "popup__content",
+  inputSelector: "popup__text",
+  buttonSelector: "popup__submit-button"
+});
+
+*/
