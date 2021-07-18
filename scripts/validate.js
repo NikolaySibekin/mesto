@@ -9,7 +9,7 @@ const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
   inputElement.classList.remove('popup__text_type-error');
   errorElement.classList.remove('popup__input-error_active');
-  errorElement.textContent = '';
+  errorElement.textContent = ' ';
 };
 
 const toggleButtonState = (inputList, buttonElement) => {
