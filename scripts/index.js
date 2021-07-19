@@ -166,8 +166,8 @@ popupPlaceCloseButtonElement.addEventListener('click', () => {
 popupImageCloseButtonElement.addEventListener('click', () => {
   popupClosed(popupImageElement);
 });
-popupEditSubmitButtonElement.addEventListener('submit', handleEditSubmit);
-popupPlaceSubmitButtonElement.addEventListener('submit', handlePlaceSubmit);
+popupEditSubmitButtonElement.addEventListener('click', handleEditSubmit);
+popupPlaceSubmitButtonElement.addEventListener('click', handlePlaceSubmit);
 
 
 
