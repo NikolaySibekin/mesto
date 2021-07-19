@@ -151,7 +151,7 @@ const handleImage = (event) => {
   popupImageImage.src = element.src;
   popupImageImage.alt = element.alt;
   popupImageCaption.textContent = element.alt;
-  togglePopupVisibility(popupImageElement);
+  popupOpened(popupImageElement);
 };
 
 
