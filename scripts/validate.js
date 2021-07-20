@@ -1,23 +1,32 @@
+const dict = {
+  formSelector: '.popup__content',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_inactive',
+  inputErrorClass: 'popup__text_type-error',
+  errorClass: 'popup__input-error_active'
+};
+
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
-  inputElement.classList.add('popup__text_type-error');
+  inputElement.classList.add(dict.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error_active');
+  errorElement.classList.add(dict.errorClass);
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
-  inputElement.classList.remove('popup__text_type-error');
-  errorElement.classList.remove('popup__input-error_active');
+  inputElement.classList.remove(dict.inputErrorClass);
+  errorElement.classList.remove(dict.errorClass);
   errorElement.textContent = "";
 };
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute('disabeled', true);
-    buttonElement.classList.add('popup__submit-button_inactive');
+    buttonElement.classList.add(dict.inactiveButtonClass);
   } else {
-    buttonElement.classList.remove('popup__submit-button_inactive');
+    buttonElement.classList.remove(dict.inactiveButtonClass);
     buttonElement.textContent = "Сохранить";
   }
 };
@@ -37,8 +46,8 @@ const isValid = (formElement, inputElement) => {
 };
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__text'));
-  const buttonElement = formElement.querySelector('.popup__submit-button');
+  const inputList = Array.from(formElement.querySelectorAll(dict.inputSelector));
+  const buttonElement = formElement.querySelector(dict.submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
@@ -50,7 +59,7 @@ const setEventListeners = (formElement) => {
 };
 
 const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__content'));
+  const formList = Array.from(document.querySelectorAll(dict.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -61,13 +70,5 @@ const enableValidation = () => {
 
 enableValidation();
 
-/*
-enableValidation({
-  formSelector: '.popup__content',
-  inputSelector: '.popup__text',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_inactive',
-  inputErrorClass: 'popup__text_type-error',
-  errorClass: 'popup__input-error'
-});
-*/
+
+
