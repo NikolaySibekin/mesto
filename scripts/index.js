@@ -110,6 +110,10 @@ const popupOpened = (popupElementName) => {
   });
 };
 
+const popupClosed = (popupElementName) => {
+  popupElementName.classList.remove('popup_opened');
+};
+
 const handleEdit = () => {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
