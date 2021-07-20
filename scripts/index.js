@@ -95,28 +95,33 @@ const handleLike = (event) => {
   event.target.classList.toggle('card__group_active');
 };
 
+const closePopupByClickOnOverlay = (event) => {
+  const popupElement = document.querySelector('.popup');
+  if (event.target != event.currentTarget) {
+      return
+  }
+  popupClosed(popupElement);
+};
+
 const closeByEsc = (event) => {
-  if (event.key === 27) {
-    openedPopup = document.querySelector('openedPopup');
-    popupClosed(openedPopup);
+  const popupElement = document.querySelector('.popup');
+  if (event.code === 'Escape') {
+    popupClosed(popupElement);
   }
 };
 
-document.addEventListener("click", (event) => {
-  const openedPopup = document.querySelector('.popup_opened');
-  if (openedPopup && event.target !== openedPopup && !openedPopup.contains(event.target)) {
-    document.querySelector('.popup').classList.remove('.popup_opened');
-  }
-});
-
 const popupOpened = (popupElementName) => {
   popupElementName.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEsc);
+
+  document.addEventListener('keyup', closeByEsc);
+  document.addEventListener('click', closePopupByClickOnOverlay);
 };
 
 const popupClosed = (popupElementName) => {
   popupElementName.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEsc);
+
+  document.removeEventListener('keyup', closeByEsc);
+  document.removeEventListener('click', closePopupByClickOnOverlay);
 };
 
 const handleEdit = () => {
