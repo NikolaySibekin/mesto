@@ -95,33 +95,19 @@ const handleLike = (event) => {
   event.target.classList.toggle('card__group_active');
 };
 
-const closePopupByClickOnOverlay = (event) => {
-  const popupElement = document.querySelector('.popup');
-  if (event.target != event.currentTarget) {
-      return
-  }
-  popupClosed(popupElement);
-};
-
-const closeByEsc = (event) => {
-  const popupElement = document.querySelector('.popup');
-  if (event.code === 'Escape') {
-    popupClosed(popupElement);
-  }
-};
-
 const popupOpened = (popupElementName) => {
   popupElementName.classList.add('popup_opened');
-
-  document.addEventListener('keyup', closeByEsc);
-  document.addEventListener('click', closePopupByClickOnOverlay);
-};
-
-const popupClosed = (popupElementName) => {
-  popupElementName.classList.remove('popup_opened');
-
-  document.removeEventListener('keyup', closeByEsc);
-  document.removeEventListener('click', closePopupByClickOnOverlay);
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'Escape') {
+      popupElementName.classList.remove('popup_opened');
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (event.target != event.currentTarget) {
+      return
+    }
+    popupElementName.classList.remove('popup_opened');
+  });
 };
 
 const handleEdit = () => {
