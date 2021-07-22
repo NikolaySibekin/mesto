@@ -95,23 +95,23 @@ const handleLike = (event) => {
   event.target.classList.toggle('card__group_active');
 };
 
+const escapeCode = 'Escape';
+
+const closePopupEsc = (event) => {
+  if (event.code === escapeCode) {
+    const openedPopup = document.querySelector('.popup_opened');
+    popupClosed(openedPopup);
+  }
+};
+
 const popupOpened = (popupElementName) => {
   popupElementName.classList.add('popup_opened');
-  document.addEventListener('keydown', (event) => {
-    if (event.code === 'Escape') {
-      popupElementName.classList.remove('popup_opened');
-    }
-  });
-  document.addEventListener('click', (event) => {
-    if (event.target != event.currentTarget) {
-      return
-    }
-    popupElementName.classList.remove('popup_opened');
-  });
+  document.addEventListener("keydown", closePopupEsc);
 };
 
 const popupClosed = (popupElementName) => {
   popupElementName.classList.remove('popup_opened');
+  document.removeEventListener("keydown", closePopupEsc);
 };
 
 const handleEdit = () => {
@@ -166,5 +166,4 @@ popupPlaceSubmitButtonElement.addEventListener('click', handlePlaceSubmit);
 
 
 
-renderCards(initialCards);
-
+renderCards(initialCards)
