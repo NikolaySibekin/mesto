@@ -104,14 +104,23 @@ const closePopupEsc = (event) => {
   }
 };
 
+const closeByClickOnOverlay = (event) => {
+  if (event.target.classList.contains('popup')) {
+    const openedPopup = document.querySelector('.popup_opened');
+    popupClosed(openedPopup);
+  }
+};
+
 const popupOpened = (popupElementName) => {
   popupElementName.classList.add('popup_opened');
   document.addEventListener("keydown", closePopupEsc);
+  document.addEventListener("click", closeByClickOnOverlay);
 };
 
 const popupClosed = (popupElementName) => {
   popupElementName.classList.remove('popup_opened');
   document.removeEventListener("keydown", closePopupEsc);
+  document.removeEventListener("click", closeByClickOnOverlay);
 };
 
 const handleEdit = () => {
