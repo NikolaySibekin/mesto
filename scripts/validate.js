@@ -1,4 +1,4 @@
-const dict = {
+const config = {
   formSelector: '.popup__content',
   inputSelector: '.popup__text',
   submitButtonSelector: '.popup__submit-button',
@@ -9,25 +9,30 @@ const dict = {
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
-  inputElement.classList.add(dict.inputErrorClass);
+  inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(dict.errorClass);
+  errorElement.classList.add(config.errorClass);
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
-  inputElement.classList.remove(dict.inputErrorClass);
-  errorElement.classList.remove(dict.errorClass);
+  inputElement.classList.remove(config.inputErrorClass);
+  errorElement.classList.remove(config.errorClass);
   errorElement.textContent = "";
 };
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute('disabeled', true);
-    buttonElement.classList.add(dict.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add(config.inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(dict.inactiveButtonClass);
-    buttonElement.textContent = "Сохранить";
+    buttonElement.classList.remove(config.inactiveButtonClass);
+
+    if (buttonElement.textContent === "Сохранить") {
+      handleEditSubmit();
+    } else {
+      handlePlaceSubmit();
+    }
   }
 };
 
@@ -46,8 +51,8 @@ const isValid = (formElement, inputElement) => {
 };
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(dict.inputSelector));
-  const buttonElement = formElement.querySelector(dict.submitButtonSelector);
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
@@ -58,8 +63,8 @@ const setEventListeners = (formElement) => {
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(dict.formSelector));
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -68,7 +73,7 @@ const enableValidation = () => {
   });
 };
 
-enableValidation();
+enableValidation(config);
 
 
 
