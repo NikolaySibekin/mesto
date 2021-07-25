@@ -104,21 +104,27 @@ const popupClosed = (popupElementName) => {
   document.removeEventListener("click", closeByClickOnOverlay);
 };
 
+function handleEdit() {
+  nameInput.value = userName.textContent;
+  jobInput.value = userJob.textContent;
+  popupOpened(popupEditElement);
+}
+
 function handleEditSubmit() {
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
-  const openedPopup = document.querySelector('.popup_opened');
-  popupEditButtonElement.addEventListener('click', popupClosed(openedPopup));
-  formEdit.reset();
+  popupClosed(popupEditElement);
 };
 
 function handlePlaceSubmit() {
   const elementName = placeInput.value;
   const elementLink = linkInput.value;
-  const openedPopup = document.querySelector('.popup_opened');
-  popupAddButtonElement.addEventListener('click', popupClosed(openedPopup));
+  popupClosed(popupPlaceElement);
   addCard(renderedCard, createCard(elementName, elementLink));
   formAdd.reset();
+  popupClosed(popupPlaceElement);
+  popupPlaceSubmitButtonElement.setAttribute('disabled', true);
+  popupPlaceSubmitButtonElement.classList.add('popup__submit-button_inactive');
 };
 
 const handleImage = (event) => {
@@ -131,7 +137,7 @@ const handleImage = (event) => {
 
 
 popupEditButtonElement.addEventListener('click', () => {
-  popupOpened(popupEditElement);
+  handleEdit();
 });
 popupAddButtonElement.addEventListener('click', () => {
   popupOpened(popupPlaceElement);
@@ -146,5 +152,8 @@ popupPlaceCloseButtonElement.addEventListener('click', () => {
 popupImageCloseButtonElement.addEventListener('click', () => {
   popupClosed(popupImageElement);
 });
+
+formEdit.addEventListener('submit', handleEditSubmit);
+formAdd.addEventListener('submit', handlePlaceSubmit);
 
 renderCards(initialCards)
